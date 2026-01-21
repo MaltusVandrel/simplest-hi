@@ -2,8 +2,8 @@ FROM node:lts-alpine
 ENV NODE_ENV=production
 WORKDIR /usr/src/app
 COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN next build 
 RUN npm install --production --silent 
+CMD ["npm", "run", "build"]
 RUN mv node_modules ../
 COPY . .
 EXPOSE 3000
